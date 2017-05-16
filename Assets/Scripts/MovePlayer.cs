@@ -56,7 +56,7 @@ using System.Collections;
 		 	if (Look_target != lastLook_target)
             {
 				CalculateAngle(Look_target);
-                if(angleToTarget > 1)
+                if(angleToTarget > 0.1f)
                 	transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), rotationSpeed * UnityEngine.Time.deltaTime);
  			}
          }
