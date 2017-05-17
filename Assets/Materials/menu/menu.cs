@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class menu : MonoBehaviour {
+public class menu : MonoBehaviour 
+{
 
     public GameObject settigs;
     public GameObject online;
@@ -32,13 +33,13 @@ public class menu : MonoBehaviour {
         Application.Quit();
     }
 
-    public void SetMusic(float value)
-    {
-        Global.musicLevel = value;
-    }
+//    public void SetMusic(float value)
+//    {
+//        Global.musicLevel = value;
+//    }
 
-    public void SetSound(float value)
-    {
-        Global.soundLevel = value;
-    }
+//    public void SetSound(float value)
+//    {
+//        Global.soundLevel = value;
+//    }
 }
