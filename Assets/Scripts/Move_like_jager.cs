@@ -35,6 +35,8 @@ public class Move_like_jager : MonoBehaviour
 		LookHere ();
 		if (Input.GetKeyDown (KeyCode.S))
 			weapon.SetBool ("throwing", true);
+		if (Input.GetKeyDown (KeyCode.A))
+			weapon.SetBool ("hitting", true);
 		
 	}
 	void LookHere()
