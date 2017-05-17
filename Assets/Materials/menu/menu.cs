@@ -10,7 +10,8 @@ public class menu : MonoBehaviour
 
     public void SinglePlayerGame()
     {
-        Application.LoadLevel(1);
+        //Application.LoadLevel(1);
+		UnityEngine.SceneManagement.SceneManager.LoadScene ("1scene1");
     }
 
     public void OnlineGame()

@@ -5,7 +5,8 @@ public class Move_like_jager : MonoBehaviour
 	[SerializeField]
 	float rotation_speed = 200f;
 
-	NavMeshAgent agent;
+	private NavMeshAgent agent;
+	private Animator weapon;
 	private RaycastHit hit;
 	private Vector3 Look_target = new Vector3();
 	private Vector3 LastLook_target = new Vector3();
@@ -13,6 +14,7 @@ public class Move_like_jager : MonoBehaviour
 	private float view_angle;
 	void Start() 
 	{
+		weapon = GetComponent<Animator>();
 		agent = GetComponent<NavMeshAgent>();
 	}
 
@@ -31,6 +33,9 @@ public class Move_like_jager : MonoBehaviour
 			Look_target = hit.point;
 		}
 		LookHere ();
+		if (Input.GetKeyDown (KeyCode.S))
+			weapon.SetBool ("throwing", true);
+		
 	}
 	void LookHere()
 	{
