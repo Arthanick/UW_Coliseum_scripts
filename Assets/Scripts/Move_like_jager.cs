@@ -45,7 +45,7 @@ public class Move_like_jager : MonoBehaviour
 		if (Look_target != LastLook_target)
 		{
 			CalculateAngle(Look_target);
-			if(view_angle > 0.1f)
+			if(view_angle > 3)
 				transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), rotation_speed * UnityEngine.Time.deltaTime);
 		}
 	}
