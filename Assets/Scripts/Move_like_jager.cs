@@ -12,6 +12,7 @@ public class Move_like_jager : MonoBehaviour
 	private Vector3 LastLook_target = new Vector3();
 	private Vector3 dir;
 	private float view_angle;
+
 	void Start() 
 	{
 		weapon = GetComponent<Animator>();
