@@ -5,7 +5,7 @@ public class Move_like_jager : MonoBehaviour
 	[SerializeField]
 	float rotation_speed = 200f;
 
-	private NavMeshAgent agent;
+	private UnityEngine.AI.NavMeshAgent agent;
 	private Animator weapon;
 	private RaycastHit hit;
 	private Vector3 Look_target = new Vector3();
@@ -16,7 +16,7 @@ public class Move_like_jager : MonoBehaviour
 	void Start() 
 	{
 		weapon = GetComponent<Animator>();
-		agent = GetComponent<NavMeshAgent>();
+		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 	}
 
 	void Update() 
