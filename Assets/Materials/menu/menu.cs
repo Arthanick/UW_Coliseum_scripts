@@ -6,7 +6,7 @@ public class menu : MonoBehaviour
 
     public GameObject settigs;
     public GameObject online;
-    public GameObject NewOnline;
+    public GameObject joinOnline;
 
     public void SinglePlayerGame()
     {
@@ -17,16 +17,27 @@ public class menu : MonoBehaviour
     public void OnlineGame()
     {
         online.SetActive(!online.activeSelf);
+        joinOnline.SetActive(false);
+        settigs.SetActive(false);
     }
 
     public void NewOnlineGame()
     {
-        NewOnline.SetActive(!NewOnline.activeSelf);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("1scene1");
+    }
+
+    public void joinOnlineGame()
+    {
+        joinOnline.SetActive(!joinOnline.activeSelf);
+        settigs.SetActive(false);
+        online.SetActive(false);
     }
 
     public void Settigs()
     {
         settigs.SetActive(!settigs.activeSelf);
+        online.SetActive(false);
+        joinOnline.SetActive(false);
     }
 
     public void Exit()
