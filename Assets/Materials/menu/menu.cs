@@ -18,6 +18,7 @@ public class menu : MonoBehaviour
     {
         online.SetActive(!online.activeSelf);
         joinOnline.SetActive(false);
+        settigs.SetActive(false);
     }
 
     public void NewOnlineGame()
@@ -28,12 +29,15 @@ public class menu : MonoBehaviour
     public void joinOnlineGame()
     {
         joinOnline.SetActive(!joinOnline.activeSelf);
+        settigs.SetActive(false);
         online.SetActive(false);
     }
 
     public void Settigs()
     {
         settigs.SetActive(!settigs.activeSelf);
+        online.SetActive(false);
+        joinOnline.SetActive(false);
     }
 
     public void Exit()
