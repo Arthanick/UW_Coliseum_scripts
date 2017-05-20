@@ -35,7 +35,7 @@ public class Camera_move : MonoBehaviour
 			{
 				current_creation = Instantiate (Dummy_prefab, Dummy_prefab.transform.position, Quaternion.identity) as GameObject;
 				Debug.Log (hit.point);
-				current_creation.transform.position = new Vector3(hit.point.x, -5.3f, hit.point.z);
+                current_creation.transform.position = hit.point;
 			}
 		}
 	}
