@@ -3,10 +3,6 @@ using System.Collections;
 
 public class weapon_hit_script : MonoBehaviour 
 {
-	void Start()
-	{
-
-	}
 
 	void Update()
 	{
