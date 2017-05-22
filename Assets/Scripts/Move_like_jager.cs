@@ -13,8 +13,9 @@ public class Move_like_jager : MonoBehaviour
 	private Vector3 LastLook_target = new Vector3();
 	private Vector3 dir;
 	private float view_angle;
+    private int Health = 3;
 
-	void Start() 
+    void Start() 
 	{
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 	}
@@ -34,8 +35,10 @@ public class Move_like_jager : MonoBehaviour
 			Look_target = hit.point;
 		}
 		LookHere ();
-		
-	}
+        if (Health == 0)
+            Destroy(this.gameObject);
+    }
+
 	void LookHere()
 	{
 		if (Look_target != LastLook_target)
@@ -45,9 +48,18 @@ public class Move_like_jager : MonoBehaviour
 				transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), rotation_speed * UnityEngine.Time.deltaTime);
 		}
 	}
+
 	private void CalculateAngle(Vector3 temp)
 	{
 		dir = new Vector3(temp.x, transform.position.y, temp.z) - transform.position;
 		view_angle = Vector3.Angle(dir, transform.forward);
-	}		
+	}
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name == "throwed_spire")
+            Health--;
+        if (other.gameObject.name == "Weapon")
+            Destroy(this.gameObject);
+    }
 }

@@ -33,9 +33,7 @@ public class Camera_move : MonoBehaviour
 		{
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) 
 			{
-				current_creation = Instantiate (Dummy_prefab, Dummy_prefab.transform.position, Quaternion.identity) as GameObject;
-				Debug.Log (hit.point);
-                current_creation.transform.position = hit.point;
+				current_creation = Instantiate (Dummy_prefab, hit.point, Quaternion.identity) as GameObject;
 			}
 		}
 	}
