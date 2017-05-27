@@ -23,7 +23,7 @@ public class menu : MonoBehaviour
 
     public void NewOnlineGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("1scene1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("sceneNet");
     }
 
     public void joinOnlineGame()
