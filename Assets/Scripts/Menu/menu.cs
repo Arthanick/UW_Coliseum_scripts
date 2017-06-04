@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class menu : MonoBehaviour 
+public class menu : MonoBehaviour
 {
+    const int NETWORK_PORT = 4585;
+    const int MAX_CONNECTIONS = 20;
 
     public GameObject settigs;
     public GameObject online;
     public GameObject joinOnline;
+    public GameObject JoinOnlineButton;
+
+    public GameObject remoteServer;
 
     public void SinglePlayerGame()
     {
@@ -23,7 +29,10 @@ public class menu : MonoBehaviour
 
     public void NewOnlineGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("sceneNet");
+        Network.InitializeSecurity();
+        Network.InitializeServer(MAX_CONNECTIONS, NETWORK_PORT, false); //запуск сервера
+        //NetworkManager.networkSceneName = "sceneNet";
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("sceneNet");
     }
 
     public void joinOnlineGame()
@@ -31,6 +40,11 @@ public class menu : MonoBehaviour
         joinOnline.SetActive(!joinOnline.activeSelf);
         settigs.SetActive(false);
         online.SetActive(false);
+    }
+
+    public void joinOnlineGameButton()
+    {
+        Network.Connect(remoteServer.ToString(), NETWORK_PORT);
     }
 
     public void Settigs()
@@ -45,13 +59,35 @@ public class menu : MonoBehaviour
         Application.Quit();
     }
 
-//    public void SetMusic(float value)
-//    {
-//        Global.musicLevel = value;
-//    }
+    void OnFailedToConnect(NetworkConnectionError error)
+    {
+        Debug.Log("Не удалось подключиться: " + error.ToString()); // при ошибке подключения к серверу 
+    }
 
-//    public void SetSound(float value)
-//    {
-//        Global.soundLevel = value;
-//    }
+    void OnDisconnectedFromServer(NetworkDisconnection info)
+    {
+        if (Network.isClient)
+        {
+            Debug.Log("Отключен от сервера: " + info.ToString()); // при успешном либо неуспешном отключении выводится результат
+        }
+        else
+        {
+            Debug.Log("Соединение закрыто"); // сообщение выводится при выключении сервера 
+        }
+    }
+
+    void OnConnectedToServer()
+    {
+        Debug.Log("Подключен к серверу"); // успешное подключение к серверу
+    }
+
+    //    public void SetMusic(float value)
+    //    {
+    //        Global.musicLevel = value;
+    //    }
+
+    //    public void SetSound(float value)
+    //    {
+    //        Global.soundLevel = value;
+    //    }
 }
