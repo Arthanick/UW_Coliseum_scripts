@@ -6,13 +6,11 @@ public class menu : MonoBehaviour
 {
     const int NETWORK_PORT = 4585;
     const int MAX_CONNECTIONS = 20;
+    const string remoteServer = "127.0.0.1";
 
     public GameObject settigs;
     public GameObject online;
     public GameObject joinOnline;
-    public GameObject JoinOnlineButton;
-
-    public GameObject remoteServer;
 
     public void SinglePlayerGame()
     {
@@ -32,7 +30,7 @@ public class menu : MonoBehaviour
         Network.InitializeSecurity();
         Network.InitializeServer(MAX_CONNECTIONS, NETWORK_PORT, false); //запуск сервера
         //NetworkManager.networkSceneName = "sceneNet";
-        //UnityEngine.SceneManagement.SceneManager.LoadScene("sceneNet");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("sceneNet");
     }
 
     public void joinOnlineGame()
@@ -44,7 +42,8 @@ public class menu : MonoBehaviour
 
     public void joinOnlineGameButton()
     {
-        Network.Connect(remoteServer.ToString(), NETWORK_PORT);
+        Network.Connect(remoteServer, NETWORK_PORT);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("sceneNet");
     }
 
     public void Settigs()
