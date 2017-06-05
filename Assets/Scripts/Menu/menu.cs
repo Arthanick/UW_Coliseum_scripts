@@ -11,6 +11,7 @@ public class menu : MonoBehaviour
     public GameObject settigs;
     public GameObject online;
     public GameObject joinOnline;
+    public UnityEngine.UI.Text field_with_IP;
 
     public void SinglePlayerGame()
     {
@@ -42,7 +43,7 @@ public class menu : MonoBehaviour
 
     public void joinOnlineGameButton()
     {
-        Network.Connect(remoteServer, NETWORK_PORT);
+        Network.Connect("127.0.0.1", NETWORK_PORT);
         UnityEngine.SceneManagement.SceneManager.LoadScene("sceneNet");
     }
 

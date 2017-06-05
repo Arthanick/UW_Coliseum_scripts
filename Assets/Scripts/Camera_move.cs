@@ -26,9 +26,9 @@ public class Camera_move : MonoBehaviour
 		if (Input.GetKey (KeyCode.RightArrow))
 			Cam.transform.Translate (Vector3.right * speed * Time.deltaTime);
 		if (Input.GetKey (KeyCode.UpArrow))
-			Cam.transform.Translate(Vector3.up * speed * Time.deltaTime);
+			Cam.transform.Translate(new Vector3(0,1,1) * speed * Time.deltaTime);
 		if (Input.GetKey (KeyCode.DownArrow))
-			Cam.transform.Translate (Vector3.down * speed * Time.deltaTime);
+			Cam.transform.Translate (new Vector3(0, -1, -1) * speed * Time.deltaTime);
 		if (Input.GetKey (KeyCode.LeftControl) && Input.GetMouseButtonDown(0)) 
 		{
 			if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) 
